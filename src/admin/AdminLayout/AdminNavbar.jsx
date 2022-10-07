@@ -7,7 +7,8 @@ const AdminNavbar = () => {
     <nav className='Navbar'>
         <ul>
             {/* end tilføjet for at ungå at Home er .aktiv konstant */}
-            <li><NavLink to="/admin">Admin Home</NavLink></li>
+            <li><NavLink to="/admin" end>Admin Home</NavLink></li>
+            <li><NavLink to="admintours">Admin Tours</NavLink></li>
             <li><NavLink to="/" end>Public Home</NavLink></li>
         </ul>
     </nav>
