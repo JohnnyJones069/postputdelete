@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 import { getToursTeaser, deleteTour } from './AdminFetch';
 
@@ -58,7 +59,8 @@ const AdminTours = () => {
                         <h2>{ t.title }</h2>
                         <p>{ new Date( t.traveldate ).toLocaleDateString( "da", { day: "numeric", month: "long", year: "numeric" } ) }</p>
                         <p>{ t.teaser }</p>
-                        <button onClick={ () => handleDelete( t._id, t.title ) }>Slet element</button>
+                        <AiFillDelete size='2em' color='red' title='Delete button' onClick={ () => handleDelete( t._id, t.title ) }/>
+                        <AiFillEdit size='2em' color='blue' title='Edit button' />
                     </div>
                 )
             }
