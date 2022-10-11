@@ -1,6 +1,18 @@
 import React, { useState } from 'react'
+import ReactQuill from 'react-quill'
 
 import { createTour } from './AdminFetch'
+
+import 'react-quill/dist/quill.snow.css';
+const modules = {
+    toolbar: [
+        [ 'bold', 'italic', 'underline', 'strike' ],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [ { 'color': [ '#000', '#e6000', '#ff9900' ] } ]
+    ]
+
+}
+
 
 
 const AdminToursCreate = () => {
@@ -9,6 +21,9 @@ const AdminToursCreate = () => {
     const [ error, setError ] = useState( false )
     const [ message, setMessage ] = useState()
 
+    const [ content, setContent ] = useState()
+    const [ roomtype, setRoomtype ] = useState()
+
 
     const handleSubmit = ( e ) => {
         e.preventDefault() // Forhindre reload af side
@@ -16,12 +31,15 @@ const AdminToursCreate = () => {
         setLoading( true )
 
         let formData = new FormData( e.target )
+        formData.append( "content", content );
+
+
 
         createTour( formData )
             .then( ( response ) => {
                 e.target.reset() // Tømmere formularfelterne
-                setMessage("ny tur er oprettet! id nummer: " + response.data._id )
-                
+                setMessage( "ny tur er oprettet! id nummer: " + response.data._id )
+
             } )
             .catch( ( err ) => {
                 setError( true )
@@ -39,9 +57,7 @@ const AdminToursCreate = () => {
 
             <h1>Opret en ny tur</h1>
 
-            {
-                message && <h2>{message}</h2>
-            }
+            { message && <h2>{ message }</h2> }
             <form onSubmit={ handleSubmit }>
 
                 {/* Title */ }
@@ -56,6 +72,7 @@ const AdminToursCreate = () => {
                     <label htmlFor='inpTeaser'>Turens teaser:</label>
                     <br />
                     <textarea name="teaser" placeholder='Skriv din teaser her' id="inpTeaser" required />
+
                 </div>
 
 
@@ -63,14 +80,17 @@ const AdminToursCreate = () => {
                 <div>
                     <label htmlFor='inpContent'>Turens Content:</label>
                     <br />
-                    <textarea name="content" placeholder='Skriv dit content her' id="inpContent" required />
+                    {/* <textarea name="content" id="inpContent" required /> */ }
+                    <ReactQuill theme="snow" modules={modules} placeholder='Beskriv turen' onChange={ setContent } />
                 </div>
 
                 {/* Room Type */ }
                 <div>
                     <label htmlFor='txtRoom'>Turens Værelses type:</label>
                     <br />
-                    <textarea name="roomtype" placeholder='Skriv din værelses type her' id="txtRoom" required />
+                    {/* <textarea name="roomtype" placeholder='Skriv din værelses type her' id="txtRoom" required /> */}
+                    <ReactQuill theme="snow" modules={modules} placeholder='Beskriv turen' onChange={ setRoomtype } />
+
                 </div>
 
                 {/* Travel date */ }

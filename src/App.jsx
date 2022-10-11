@@ -14,6 +14,7 @@ import AdminTours from './admin/AdminTours';
 import LogIn from './admin/LogIn';
 import NoMatch from './admin/NoMatch';
 import AdminToursCreate from './admin/AdminToursCreate';
+import AdminToursEdit from './admin/AdminToursEdit';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<AdminHome />} />
           <Route path="admintours" element={<AdminTours />} />
           <Route path="admintoursopret" element={<AdminToursCreate />} />
+          <Route path="admintoursret/:ID" element={<AdminToursEdit />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
 
