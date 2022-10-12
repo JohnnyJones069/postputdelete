@@ -31,3 +31,10 @@ export const createTour = (newTour) => {
   let response = axiosBase.post("tours/admin", newTour );
   return response;
 };
+
+//  Put - ret tour
+export const editTour = (updatedTour, tourID) => {
+  let response = axiosBase.put("tours/admin/" + tourID, updatedTour );
+  return response;
+};
+

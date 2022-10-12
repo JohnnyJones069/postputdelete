@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAGI,OAHG,CAGH,OAAO,AAAA,CACH,gBAAgB,CAAE,GAAG,CACrB,MAAM,CAAC,gBAAgB,CAC1B",
+    "sources": [
+        "../../src/scss/navbar.scss"
+    ],
+    "names": [],
+    "file": "navbar.min.css"
+}

@@ -11,7 +11,7 @@ import About from './pages/About';
 import AdminLayout from './admin/AdminLayout/AdminLayout';
 import AdminHome from './admin/AdminHome';
 import AdminTours from './admin/AdminTours';
-import LogIn from './admin/LogIn';
+import Login from './admin/Login';
 import NoMatch from './admin/NoMatch';
 import AdminToursCreate from './admin/AdminToursCreate';
 import AdminToursEdit from './admin/AdminToursEdit';
@@ -19,6 +19,10 @@ import AdminToursEdit from './admin/AdminToursEdit';
 function App() {
   return (
     <div className="App">
+
+      {/* BrowserRouter ligger i index.js */}
+      {/* LoginContextProvider ligger i index.js */}
+
       <Routes>
 
         {/* Public */}
@@ -26,7 +30,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="kontakt" element={<Contact />} />
           <Route path="omos" element={<About />} />
-          <Route path="login" element={<LogIn />} />
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<NoMatch />} />
         
         </Route>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,AAAC,CACJ,MAAM,CAAE,kBAAkB,CAC1B,aAAa,CAAE,GAAG,CAClB,UAAU,CAAE,kBAAkB,CAC9B,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,iBAAiB,CAAE,uBAAuB,CAE1C,SAAS,CAAE,uBAAuB,CACrC,AAGD,kBAAkB,CAAlB,IAAkB,CACd,EAAE,CACE,iBAAiB,CAAE,YAAY,CAGnC,IAAI,CACA,iBAAiB,CAAE,cAAc,EAIzC,UAAU,CAAV,IAAU,CACN,EAAE,CACE,SAAS,CAAE,YAAY,CAG3B,IAAI,CACA,SAAS,CAAE,cAAc",
+    "sources": [
+        "../../src/scss/loader.scss"
+    ],
+    "names": [],
+    "file": "loader.min.css"
+}
