@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom';
-import { LoginContext } from '../../context/LoginContext';
+import Logout from '../../components/Logout';
+// import { LoginContext } from '../../context/LoginContext';
 
 
 const AdminNavbar = () => {
 
   // Hent signOut/Logud metoden
-  const { signOut } = useContext( LoginContext );
+  // const { signOut } = useContext( LoginContext );
 
 
   return (
@@ -17,7 +18,7 @@ const AdminNavbar = () => {
         <li><NavLink to="admintours">Admin Tours</NavLink></li>
         <li><NavLink to="admintoursopret">Admin Tours Opret</NavLink></li>
         <li><NavLink to="/" end>Public Home</NavLink></li>
-        <li><button onClick={ signOut } >Log ud</button></li>
+        <li><Logout /></li>
       </ul>
     </nav>
   )

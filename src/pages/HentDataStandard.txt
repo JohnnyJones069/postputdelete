@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from 'react'
+import { getAllTours } from '../admin/AdminFetch'
+
+
+const Home = () => {
+
+  const [ tours, setTours ] = useState()
+  const [ loading, setLoading ] = useState( false )
+  const [ error, setError ] = useState( false )
+
+  useEffect( () => {
+    setLoading( true )
+
+    getAllTours()
+      .then((response) => {
+
+      })
+      .catch((err) => {
+
+      })
+      .finally(() => {
+
+      })
+  }, [] )
+
+  return (
+    <div className='Home'>
+
+
+
+    </div>
+  )
+}
+
+export default Home
