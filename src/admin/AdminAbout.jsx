@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ErrorMessage from '../components/ErrorMessage'
 import Loader from '../components/Loader'
 import { getAbout, editAbout } from './AdminFetch'
-
-
+import useThumb from '../hooks/useThumb'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 import MessageBox from '../components/MessageBox'
@@ -22,6 +21,8 @@ const AdminAbout = () => {
   const [ loading, setLoading ] = useState( false )
 
   const [ content, setContent ] = useState()
+  const [ message, setMessage ] = useState()
+  const [ thumbImage, makeThumb ] = useThumb()
 
 
   useEffect( () => {
@@ -39,7 +40,7 @@ const AdminAbout = () => {
         setLoading( false )
       } )
 
-  }, [] )
+  }, [ message ] )
 
 
   const handleSubmit = ( e ) => {
@@ -56,6 +57,10 @@ const AdminAbout = () => {
         console.log( response.data )
         setMessage( "Om os er rettet!" )
 
+        // Tøm input-file og thumb
+        e.target.form.image.value = "";
+        makeThumb( "" );
+
       } )
       .catch( ( err ) => {
         setError( true )
@@ -63,20 +68,25 @@ const AdminAbout = () => {
       } )
       .finally( () => {
         setLoading( false )
-        window.scrollTo( 0, 0 ) //Scroll to top of page
+        // window.scrollTo( 0, 0 ) // Scroll to top of page
       } )
 
   }
 
+  const resetFileupload = ( e ) => {
+    e.target.form.image.value = ""; // Tøm input-feltet med name="image"
+    makeThumb( "" );
+  }
 
   return (
     <div>
       <h1>Ret About segmentet</h1>
       { error && <ErrorMessage /> }
       { loading && <Loader /> }
+      { message && <MessageBox messagetitle={ message } emptyMessage={ setMessage } /> }
 
       { about && <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={ handleSubmit }>
           <div>
             <label htmlFor="inpTitle">Titel</label>
             <br />
@@ -93,7 +103,22 @@ const AdminAbout = () => {
             <br />
             <label htmlFor='inpImg'>Vælg evt. et andet billed</label>
             <br />
-            <input type="file" accept='image/*' name="image" id="inpImg" />
+            <input type="file" accept='image/*' name="image" id="inpImg" onChange={ ( e ) => makeThumb( e.target.files[ 0 ] ) } />
+            <br />
+            {
+              thumbImage &&
+              <>
+                <img src={ thumbImage } width="300px" alt="thumbnail-billed" />
+
+                <button onClick={ resetFileupload }>&#10006;</button>
+              </>
+
+
+
+              // thumbImage && {thumbImage} // For at gøre det nemmere. (Husk at du kan lave en class på img-tagget i useThumb.jsx)
+            }
+
+
           </div>
           <button type='submit'>Ret About segment</button>
         </form>
