@@ -29,15 +29,15 @@ const Home = () => {
       } )
   }, [] )
 
-  function randomizeArray(arr) {
-    for (let i = arr.length -1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i+1));
-      let k = arr[i];
-      arr[i] = arr[j];
-      arr[j] = k;
-    }
-    return arr;
-  }
+  // function randomizeArray(arr) {
+  //   for (let i = arr.length -1; i > 0; i--) {
+  //     let j = Math.floor(Math.random() * (i+1));
+  //     let k = arr[i];
+  //     arr[i] = arr[j];
+  //     arr[j] = k;
+  //   }
+  //   return arr;
+  // }
 
   return (
     <div className='Home'>
@@ -48,8 +48,9 @@ const Home = () => {
       {/* tours.slice(0,2).map gør at jeg ser kun de første 2 */}
       {/* tours.slice(1,2).map gør at jeg ser kun den 2. i rækken */}
       {/* Array.sort(() => 0.5 - Math.random()) React venlig randomizer */}
+      {/* randomizeArray(tours).map */}
       {
-                tours && randomizeArray(tours).map( t =>
+                tours && tours.map( t =>
                     <div key={ t._id }>
                         <h2>{ t.title }</h2>
                         <p>{ new Date( t.traveldate ).toLocaleDateString( "da", { day: "numeric", month: "long", year: "numeric" } ) }</p>

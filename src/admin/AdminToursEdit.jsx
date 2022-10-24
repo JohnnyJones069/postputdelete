@@ -13,7 +13,6 @@ const modules = {
     [ { 'list': 'ordered' }, { 'list': 'bullet' } ],
     [ { 'color': [ '#000', '#e6000', '#ff9900' ] } ]
   ]
-
 }
 
 const AdminToursEdit = () => {
@@ -35,8 +34,8 @@ const AdminToursEdit = () => {
       .then( ( response ) => {
         setTour( response.data )
 
-        setContent( response.data.content )
-        setRoomtype( response.data.roomtype )
+        // setContent( response.data.content )
+        // setRoomtype( response.data.roomtype )
 
         setError( false )
       } )

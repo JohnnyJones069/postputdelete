@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosBase = axios.create({ baseURL: "http://localhost:5099/" });
 
-// GET - tag alt fra API
+// GET - tag alle Tours fra API
 export const getAllTours = () => {
   let response = axiosBase.get("tours/");
   return response;
@@ -19,6 +19,12 @@ export const getToursTeaser = () => {
   let response = axiosBase.get("tours/teaser/");
   return response;
 };
+
+// GET - Tag About fra API
+export const getAbout = () => {
+  let response = axiosBase.get("about/");
+  return response;
+}
 
 // Delete - slet udvalgt tour
 export const deleteTour = (tourID) => {
@@ -38,3 +44,8 @@ export const editTour = (updatedTour, tourID) => {
   return response;
 };
 
+// PUT - RET About
+export const editAbout = (updatedAbout) => {
+  let response = axiosBase.put("about/admin", updatedAbout);
+  return response;
+}

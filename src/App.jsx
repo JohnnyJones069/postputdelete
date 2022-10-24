@@ -15,6 +15,7 @@ import Login from './admin/Login';
 import NoMatch from './admin/NoMatch';
 import AdminToursCreate from './admin/AdminToursCreate';
 import AdminToursEdit from './admin/AdminToursEdit';
+import AdminAbout from './admin/AdminAbout';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="admintours" element={<AdminTours />} />
           <Route path="admintoursopret" element={<AdminToursCreate />} />
           <Route path="admintoursret/:ID" element={<AdminToursEdit />} />
+          <Route path="adminabout" element={<AdminAbout />} /> 
           <Route path="*" element={<NoMatch />} />
         </Route>
 
