@@ -1,8 +1,121 @@
-.Navbar{
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3333;
+    color: black;
+    position: relative; //aht burger-buttons absolute-position
+    padding: 0 1rem;
 
-
-    .active{
-        background-color: red;
-        border:1px solid silver;
+    .navbar-brand {
+        font-size: 1.5rem;
+        margin: .5rem;
+        text-decoration: none;
+        color: black;
     }
+
+    .burger-button {
+        display: none; //flex
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+
+        .bar {
+            height: 3px;
+            width: 100%;
+            background-color: black;
+            border-radius: 10px;
+            transition: all 1s ease;
+
+        }
+
+        &.open .bar1 {
+            transform: rotate(-45deg) translate(-5px, 5px);
+            // transform-origin:center center ;
+        }
+
+        &.open .bar2 {
+            opacity: 0;
+        }
+
+        &.open .bar3 {
+            transform: rotate(45deg) translate(-8px, -8px);
+            // transform-origin: center center;
+        }
+
+    }
+
+    ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+
+            transition: all 0.5s ease;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+
+            }
+
+            .active {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 1rem;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 0.4rem;
+        }
+    }
+
+}
+
+@media (max-width:800px) {
+
+    .Navbar {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .burger-button {
+            display: flex;
+        }
+
+        .navbar-container {
+            height: 0;
+            // height: 300px;
+            width: 100%;
+            overflow: hidden;
+            transition: height 1s ease;
+
+            &.active {
+                height: 300px;
+            }
+        }
+
+        ul {
+            width: 100%;
+            flex-direction: column;
+
+            li {
+                text-align: center;
+            }
+        }
+
+    }
+
 }

@@ -8,6 +8,14 @@ export const getAllTours = () => {
   return response;
 };
 
+// GET - Søg i tours 
+export const searchTours = (searchKey) => {
+
+  // http://localhost:5099/tours/soeg/xxxxxxxx
+  let response = axiosBase.get("tours/soeg/" + searchKey);
+  return response;
+};
+
 // GET - tag specifik ID
 export const getTourByID = (ID) => {
   let response = axiosBase.get("tours/" + ID);

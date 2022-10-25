@@ -11,7 +11,7 @@ const AdminNavbar = () => {
 
 
   return (
-    <nav className='Navbar'>
+    <nav className='AdminNavbar'>
       <ul>
         {/* end tilføjet for at ungå at Home er .aktiv konstant */ }
         <li><NavLink to="/admin" end>Admin Home</NavLink></li>

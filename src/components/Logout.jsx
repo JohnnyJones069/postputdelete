@@ -6,9 +6,9 @@ const Logout = () => {
     const {signOut} = useContext(LoginContext)
 
     return (
-        <div>
+        <>
             <button onClick={signOut}>Log ud</button>
-        </div>
+        </>
     )
 }
 
