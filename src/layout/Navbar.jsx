@@ -32,6 +32,7 @@ const Navbar = () => {
           <li><NavLink to="/" end>Home</NavLink></li>
           <li><NavLink to="kontakt">Kontakt</NavLink></li>
           <li><NavLink to="omos">Om os</NavLink></li>
+          <li><NavLink to="tours">Alle tours (pagination)</NavLink></li>
           <li>
             <SearchInput />
           </li>

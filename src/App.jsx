@@ -17,6 +17,7 @@ import AdminToursCreate from './admin/AdminToursCreate';
 import AdminToursEdit from './admin/AdminToursEdit';
 import AdminAbout from './admin/AdminAbout';
 import SearchResult from './admin/SearchResult';
+import Tours from './admin/Tours';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="kontakt" element={<Contact />} />
           <Route path="omos" element={<About />} />
+          <Route path="tours" element={<Tours />} />
           <Route path="login" element={<Login />} />
           <Route path="searchresult/:q" element={<SearchResult />} />
           <Route path="*" element={<NoMatch />} />
