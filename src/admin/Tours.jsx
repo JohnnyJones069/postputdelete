@@ -4,6 +4,7 @@ import ErrorMessage from '../components/ErrorMessage';
 
 import { getAllTours } from './AdminFetch';
 import Pagination from '../components/Pagination';
+import AmountPerPage from '../components/AmountPerPage';
 
 const Tours = () => {
 
@@ -38,12 +39,7 @@ const Tours = () => {
 
             <h1>Alle tours - med pagination</h1>
 
-            <div>
-                <p>Antal items pr. side:</p>
-                <button onClick={ () => setItemsPerPage( 2 ) } className={itemsPerPage === 2 ? "amount-active" : null}>2</button>
-                <button onClick={ () => setItemsPerPage( 4 ) } className={itemsPerPage === 4 ? "amount-active" : null}>4</button>
-                <button onClick={ () => setItemsPerPage( 5 ) } className={itemsPerPage === 5 ? "amount-active" : null}>5</button>
-            </div>
+            <AmountPerPage setItemsPerPage={ setItemsPerPage } options={ [ 2, 3, 4, 5 ] } />
 
             <br />
 
@@ -73,6 +69,8 @@ const Tours = () => {
                         { tours.slice( ( currentPage * itemsPerPage ), ( ( currentPage * itemsPerPage ) + itemsPerPage ) ).map( t =>
                             <div className='card' key={ t._id }>
                                 <h2>{ t.title }</h2>
+                                <p>{t.teaser}</p>
+                                <p>{t.content}</p>
                             </div>
                         ) }
 
