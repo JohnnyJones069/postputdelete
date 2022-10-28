@@ -5,6 +5,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import { getAllTours } from './AdminFetch';
 import Pagination from '../components/Pagination';
 import AmountPerPage from '../components/AmountPerPage';
+import Slider from '../components/Slider';
 
 const Tours = () => {
 
@@ -39,7 +40,10 @@ const Tours = () => {
 
             <h1>Alle tours - med pagination</h1>
 
-            <AmountPerPage itemsPerPage={itemsPerPage} setItemsPerPage={ setItemsPerPage } setCurrentPage={ setCurrentPage } options={ [ 2, 3, 4, 5 ] } />
+
+
+
+
 
             <br />
 
@@ -49,6 +53,14 @@ const Tours = () => {
             {
                 tours &&
                 <div>
+
+
+                    <Slider sliderImages={tours[0].gallery} imagePath="http://localhost:5099/images/tours/"/>
+
+
+                    <AmountPerPage itemsPerPage={itemsPerPage} setItemsPerPage={ setItemsPerPage } setCurrentPage={ setCurrentPage } options={ [ 2, 3, 4, 5 ] } />
+
+
 
                     {/* <div className="pagination">
                         <button disabled={ currentPage <= 0 } onClick={ () => setCurrentPage( currentPage - 1 ) }>&lt;&lt;Prev</button>

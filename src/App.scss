@@ -1,6 +1,7 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -35,3 +36,4 @@
 @import './scss/adminlayout.scss';
 @import './scss/tours.scss';
 @import './scss/pagination.scss';
+@import './scss/slider.scss';
