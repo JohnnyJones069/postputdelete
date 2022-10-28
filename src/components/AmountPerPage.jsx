@@ -4,21 +4,20 @@ import React from 'react'
 
 const AmountPerPage = ( props ) => {
 
+    let options = props.options;
+    let itemsPerPage = props.itemsPerPage;
     let setItemsPerPage = props.setItemsPerPage;
-    let options = props.options
+    let setCurrentPage = props.setCurrentPage;
 
 
 
     return (
 
         <div>
-            
-            <p>Antal items pr. side:</p>
-            {/* <button onClick={ () => setItemsPerPage( 2 ) } className={ itemsPerPage === 2 ? "amount-active" : null }>2</button>
-            <button onClick={ () => setItemsPerPage( 4 ) } className={ itemsPerPage === 4 ? "amount-active" : null }>4</button>
-            <button onClick={ () => setItemsPerPage( 5 ) } className={ itemsPerPage === 5 ? "amount-active" : null }>5</button> */}
 
-            <select onChange={ ( e ) => setItemsPerPage( +e.target.value ) }>
+            <p>Antal items pr. side:</p>
+
+            <select defaultValue={itemsPerPage} onChange={ ( e ) => {setItemsPerPage( parseInt( e.target.value ) ); setCurrentPage(0);}}>
                 {
                     options.map( o =>
                         <option value={ o } key={ o }>{ o }</option>

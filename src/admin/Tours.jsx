@@ -12,7 +12,7 @@ const Tours = () => {
     const [ loading, setLoading ] = useState( false );
     const [ tours, setTours ] = useState();
 
-    const [ itemsPerPage, setItemsPerPage ] = useState( 2 )
+    const [ itemsPerPage, setItemsPerPage ] = useState( 4 )
     const [ currentPage, setCurrentPage ] = useState( 0 ) //Vis side 1 = index 0
 
 
@@ -39,7 +39,7 @@ const Tours = () => {
 
             <h1>Alle tours - med pagination</h1>
 
-            <AmountPerPage setItemsPerPage={ setItemsPerPage } options={ [ 2, 3, 4, 5 ] } />
+            <AmountPerPage itemsPerPage={itemsPerPage} setItemsPerPage={ setItemsPerPage } setCurrentPage={ setCurrentPage } options={ [ 2, 3, 4, 5 ] } />
 
             <br />
 
@@ -69,8 +69,7 @@ const Tours = () => {
                         { tours.slice( ( currentPage * itemsPerPage ), ( ( currentPage * itemsPerPage ) + itemsPerPage ) ).map( t =>
                             <div className='card' key={ t._id }>
                                 <h2>{ t.title }</h2>
-                                <p>{t.teaser}</p>
-                                <p>{t.content}</p>
+                                <p>{ t.teaser }</p>
                             </div>
                         ) }
 
