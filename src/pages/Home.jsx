@@ -45,21 +45,35 @@ const Home = () => {
       { error && <ErrorMessage /> }
       { loading && <Loader /> }
 
-      {/* tours.slice(0,2).map gør at jeg ser kun de første 2 */}
-      {/* tours.slice(1,2).map gør at jeg ser kun den 2. i rækken */}
-      {/* Array.sort(() => 0.5 - Math.random()) React venlig randomizer */}
-      {/* randomizeArray(tours).map */}
+      {/* tours.slice(0,2).map gør at jeg ser kun de første 2 */ }
+      {/* tours.slice(1,2).map gør at jeg ser kun den 2. i rækken */ }
+      {/* Array.sort(() => 0.5 - Math.random()) React venlig randomizer */ }
+      {/* randomizeArray(tours).map */ }
       {
-                tours && tours.map( t =>
-                    <div key={ t._id }>
-                        <h2>{ t.title }</h2>
-                        <p>{ new Date( t.traveldate ).toLocaleDateString( "da", { day: "numeric", month: "long", year: "numeric" } ) }</p>
-                        <p>{ t.teaser }</p>
-                        <div>{ parser(t.content) }</div>
-                        
-                    </div>
-                )
-            }
+        tours && tours
+
+
+          .filter( t => {
+            return ( t.rating > 3 && t.pricemaximum > 14000 ) || ( t.rating == 5 )
+          } )
+
+          .map( t =>
+            <div key={ t._id }>
+              <h2>{ t.title }</h2>
+              <p>{ new Date( t.traveldate ).toLocaleDateString( "da", { day: "numeric", month: "long", year: "numeric" } ) }</p>
+              <p>{ t.teaser }</p>
+              <div>{ parser( t.content ) }</div>
+              <div>Antal stjerner/rating:{ t.rating }</div>
+              <div>
+                <ul>
+                  <li>Min. pris { t.priceminimum }</li>
+                  <li>Max. pris { t.pricemaximum }</li>
+                </ul>
+              </div>
+            </div>
+          )
+      }
+      {/* //.reverse() for at loope API bagfra */ }
 
     </div>
   )

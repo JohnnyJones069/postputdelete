@@ -6,7 +6,6 @@ const Slider = ( props ) => {
 
     let sliderImages = props.sliderImages;
     let imagePath = props.imagePath;
-
     // Navn til timeout - så den ikke bliver dublikeret og stopper.
     let t;
 
@@ -63,8 +62,8 @@ const Slider = ( props ) => {
 
                         <div className="mySlides fade" key={ "slider" + i }>
                             <div className="numbertext">{ i + 1 } / { sliderImages.length }</div>
-                            <img src={ imagePath + s } style={ { width: "100%" } } />
-                            {/* <div className="text">Caption Text</div> */ }
+                            <img src={ imagePath + s.sliderimage } style={ { width: "100%" } } />
+                            <div className="text">{s.alttext}</ div>
                         </div>
 
 
