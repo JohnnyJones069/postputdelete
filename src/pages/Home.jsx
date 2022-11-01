@@ -3,6 +3,7 @@ import { getAllTours } from '../admin/AdminFetch'
 import ErrorMessage from '../components/ErrorMessage'
 import Loader from '../components/Loader';
 import parser from 'html-react-parser';
+import Modal from '../components/Modal';
 
 
 
@@ -11,6 +12,9 @@ const Home = () => {
   const [ tours, setTours ] = useState()
   const [ loading, setLoading ] = useState( false )
   const [ error, setError ] = useState( false )
+
+  // Til styringen af at vis/skjule modal
+  const [showModalContent, setShowModalContent] = useState()
 
   useEffect( () => {
     setLoading( true )
@@ -44,6 +48,8 @@ const Home = () => {
 
       { error && <ErrorMessage /> }
       { loading && <Loader /> }
+      {showModalContent && <Modal showModalContent={showModalContent} closeModal={setShowModalContent} />}
+
 
       {/* tours.slice(0,2).map gør at jeg ser kun de første 2 */ }
       {/* tours.slice(1,2).map gør at jeg ser kun den 2. i rækken */ }
@@ -61,14 +67,13 @@ const Home = () => {
             <div key={ t._id }>
               <h2>{ t.title }</h2>
               <p>{ new Date( t.traveldate ).toLocaleDateString( "da", { day: "numeric", month: "long", year: "numeric" } ) }</p>
-              <p>{ t.teaser }</p>
-              <div>{ parser( t.content ) }</div>
               <div>Antal stjerner/rating:{ t.rating }</div>
               <div>
                 <ul>
                   <li>Min. pris { t.priceminimum }</li>
                   <li>Max. pris { t.pricemaximum }</li>
                 </ul>
+                <span onClick={() => setShowModalContent(t._id)} style={{cursor: "pointer"}}>Læs mere...</span>
               </div>
             </div>
           )
