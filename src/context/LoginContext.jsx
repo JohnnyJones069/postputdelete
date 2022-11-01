@@ -20,6 +20,8 @@ const LoginContextProvider = ( props ) => {
             setUser( null )
         }
 
+        
+
     }
 
      // LOGOUT-funktion
